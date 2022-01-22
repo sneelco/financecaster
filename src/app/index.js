@@ -17,13 +17,11 @@ fc.init  = function () {
   var defer = q.defer();
 
   log4js.configure({
-   appenders: [
-     { type: 'console' },
-    ]
+   'appenders': { 'console': { type: 'console' } },
+   'categories': { 'default': { 'appenders': [ 'console' ], 'level': 'info' } }
   });
 
   fc.log = log4js.getLogger('financecaster');
-  fc.log.setLevel('INFO');
   fc.config_path = process.env.FC_CONFIG || 'config.ini';
 
   var init_account = function () {
